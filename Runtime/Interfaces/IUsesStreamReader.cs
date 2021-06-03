@@ -1,6 +1,6 @@
 using System;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <summary>
     /// Interface for getting access to the stream reader

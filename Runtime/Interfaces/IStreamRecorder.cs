@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <summary>
     /// APIs provided by a stream recorder

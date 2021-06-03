@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <inheritdoc cref="IUsesStreamReader" />
     /// <summary>
@@ -13,7 +13,7 @@ namespace Unity.Labs.FacialRemote
     {
         [SerializeField]
         [Tooltip("Skinned Mesh Renders that contain the blend shapes that will be driven by this controller.")]
-        SkinnedMeshRenderer[] m_SkinnedMeshRenderers = {};
+        SkinnedMeshRenderer[] m_SkinnedMeshRenderers = { };
 
         [Range(0f, 1)]
         [SerializeField]
@@ -49,10 +49,10 @@ namespace Unity.Labs.FacialRemote
 
         IStreamSettings m_LastStreamSettings;
 
-        public SkinnedMeshRenderer[] skinnedMeshRenderers { get { return m_SkinnedMeshRenderers; }}
+        public SkinnedMeshRenderer[] skinnedMeshRenderers { get { return m_SkinnedMeshRenderers; } }
         public Dictionary<SkinnedMeshRenderer, BlendShapeIndexData[]> blendShapeIndices { get { return m_Indices; } }
 
-        public float[] blendShapesScaled { get; private set; }
+        public float[] blendShapesScaled { get; set; }
 
         public IStreamReader streamReader { private get; set; }
 
@@ -204,17 +204,17 @@ namespace Unity.Labs.FacialRemote
                 }
                 else
                 {
-                    m_BlendShapes[i] =  Mathf.Lerp(0f, blendShape, m_TrackingLossSmoothing);
+                    m_BlendShapes[i] = Mathf.Lerp(0f, blendShape, m_TrackingLossSmoothing);
                 }
 
                 if (useOverride)
                 {
-                    blendShapesScaled[i] = Mathf.Min(blendShape * blendShapeOverride.blendShapeCoefficient + offset,
-                        blendShapeOverride.blendShapeMax);
+                    // blendShapesScaled[i] = Mathf.Min(blendShape * blendShapeOverride.blendShapeCoefficient + offset,
+                    //     blendShapeOverride.blendShapeMax);
                 }
                 else
                 {
-                    blendShapesScaled[i] = Mathf.Min(blendShape * m_BlendShapeCoefficient, m_BlendShapeMax);
+                    // blendShapesScaled[i] = Mathf.Min(blendShape * m_BlendShapeCoefficient, m_BlendShapeMax);
                 }
             }
         }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <inheritdoc cref = "IStreamSettings" />
     /// <summary>
@@ -62,9 +62,9 @@ namespace Unity.Labs.FacialRemote
         public int FrameNumberSize { get { return m_FrameNumberSize; } }
         public int FrameTimeSize { get { return m_FrameTimeSize; } }
         public int HeadPoseOffset { get { return m_HeadPoseOffset; } }
-        public int CameraPoseOffset  { get { return m_CameraPoseOffset; } }
-        public int FrameNumberOffset  { get { return m_FrameNumberOffset; } }
-        public int FrameTimeOffset { get { return m_FrameTimeOffset;  } }
+        public int CameraPoseOffset { get { return m_CameraPoseOffset; } }
+        public int FrameNumberOffset { get { return m_FrameNumberOffset; } }
+        public int FrameTimeOffset { get { return m_FrameTimeOffset; } }
 
         // ARKit 1.5 buffer layout
         // 0 - Error check

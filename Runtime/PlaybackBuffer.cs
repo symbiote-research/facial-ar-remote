@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <inheritdoc />
     /// <summary>
@@ -67,11 +67,11 @@ namespace Unity.Labs.FacialRemote
 
         [SerializeField]
         [Tooltip("String names of the blend shapes in the stream with their index in the array being their relative location.")]
-        string[] m_Locations = {};
+        string[] m_Locations = { };
 
         [SerializeField]
         [Tooltip("Rename mapping values to apply blend shape locations to a blend shape controller.")]
-        Mapping[] m_Mappings = {};
+        Mapping[] m_Mappings = { };
 
         public byte ErrorCheck { get { return m_ErrorCheck; } }
         public int BlendShapeSize { get { return m_BlendShapeSize; } }
@@ -79,7 +79,7 @@ namespace Unity.Labs.FacialRemote
         public int FrameTimeSize { get { return m_FrameTimeSize; } }
         public int HeadPoseOffset { get { return m_HeadPoseOffset; } }
         public int CameraPoseOffset { get { return m_CameraPoseOffset; } }
-        public int FrameNumberOffset  { get { return m_FrameNumberOffset; } }
+        public int FrameNumberOffset { get { return m_FrameNumberOffset; } }
         public int FrameTimeOffset { get { return m_FrameTimeOffset; } }
         public int bufferSize { get { return m_BufferSize; } }
         public Mapping[] mappings { get { return m_Mappings; } }
@@ -97,7 +97,7 @@ namespace Unity.Labs.FacialRemote
             set { m_RecordStream = value; }
         }
 
-        PlaybackBuffer() {}
+        PlaybackBuffer() { }
 
         public PlaybackBuffer(IStreamSettings streamSettings)
         {

@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <inheritdoc cref="IUsesStreamReader" />
     /// <summary>
@@ -133,7 +133,7 @@ namespace Unity.Labs.FacialRemote
 
         [NonSerialized]
         [HideInInspector]
-        public Transform[] animatedBones = new Transform [4];
+        public Transform[] animatedBones = new Transform[4];
 
         void Start()
         {
@@ -268,42 +268,42 @@ namespace Unity.Labs.FacialRemote
             }
 
             // Set Head Look Rig
-            var headPoseObject = new GameObject("head_pose"){ hideFlags = HideFlags.HideAndDontSave};
+            var headPoseObject = new GameObject("head_pose") { hideFlags = HideFlags.HideAndDontSave };
             m_ARHeadPose = headPoseObject.transform;
 
             m_HeadStartPose = new Pose(headLocalPose.position, headLocalPose.rotation);
 
             m_ARHeadPose.SetPositionAndRotation(headWorldPose.position, Quaternion.identity);
-            var headOffset = new GameObject("head_offset"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            var headOffset = new GameObject("head_offset") { hideFlags = HideFlags.HideAndDontSave }.transform;
             headOffset.SetPositionAndRotation(headWorldPose.position, headWorldPose.rotation);
             headOffset.SetParent(transform, true);
             m_ARHeadPose.SetParent(headOffset, true);
             m_ARHeadPose.localRotation = Quaternion.identity;
 
             // Set Neck Look Rig
-            var neckPoseObject = new GameObject("neck_pose"){ hideFlags = HideFlags.HideAndDontSave};
+            var neckPoseObject = new GameObject("neck_pose") { hideFlags = HideFlags.HideAndDontSave };
             m_ARNeckPose = neckPoseObject.transform;
 
             m_NeckStartPose = new Pose(neckLocalPose.position, neckLocalPose.rotation);
 
             m_ARNeckPose.SetPositionAndRotation(neckWorldPose.position, Quaternion.identity);
-            var neckOffset = new GameObject("neck_offset"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            var neckOffset = new GameObject("neck_offset") { hideFlags = HideFlags.HideAndDontSave }.transform;
             neckOffset.SetPositionAndRotation(neckWorldPose.position, neckWorldPose.rotation);
             neckOffset.SetParent(transform, true);
             m_ARNeckPose.SetParent(neckOffset, true);
             m_ARNeckPose.localRotation = Quaternion.identity;
 
             // Set Eye Look Rig
-            var eyePoseObject = new GameObject("eye_pose"){ hideFlags = HideFlags.HideAndDontSave};
+            var eyePoseObject = new GameObject("eye_pose") { hideFlags = HideFlags.HideAndDontSave };
             m_AREyePose = eyePoseObject.transform;
-            var eyePoseLookObject = new GameObject("eye_look"){ hideFlags = HideFlags.HideAndDontSave};
+            var eyePoseLookObject = new GameObject("eye_look") { hideFlags = HideFlags.HideAndDontSave };
             m_EyePoseLookAt = eyePoseLookObject.transform;
             m_EyePoseLookAt.SetParent(m_AREyePose);
             m_EyePoseLookAt.localPosition = Vector3.forward * m_EyeLookDistance;
 
             // Eye Center Look
             m_AREyePose.SetPositionAndRotation(Vector3.Lerp(eyeRightWorldPose.position, eyeLeftWorldPose.position, 0.5f), transform.rotation);
-            var eyeOffset = new GameObject("eye_offset"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            var eyeOffset = new GameObject("eye_offset") { hideFlags = HideFlags.HideAndDontSave }.transform;
             eyeOffset.position = m_AREyePose.position;
             eyeOffset.SetParent(m_HeadBone != null ? m_HeadBone : transform, true);
 
@@ -312,7 +312,7 @@ namespace Unity.Labs.FacialRemote
             // Eye Right Look
             m_RightEyeStartPose = new Pose(eyeRightLocalPose.position, eyeRightLocalPose.rotation);
             var rightEyeOffset = eyeRightWorldPose.position - m_AREyePose.position;
-            var eyeRightPoseLookObject = new GameObject("eye_right_look"){ hideFlags = HideFlags.HideAndDontSave};
+            var eyeRightPoseLookObject = new GameObject("eye_right_look") { hideFlags = HideFlags.HideAndDontSave };
             m_EyeRightPoseLookAt = eyeRightPoseLookObject.transform;
             m_EyeRightPoseLookAt.SetParent(m_AREyePose);
             if (!m_RightEyeNegZ)
@@ -322,11 +322,11 @@ namespace Unity.Labs.FacialRemote
 
             // Eye Left Look
             m_LeftEyeStartPose = new Pose(eyeLeftLocalPose.position, eyeLeftLocalPose.rotation);
-            var leftEyeOffset = eyeLeftWorldPose.position - m_AREyePose.position ;
-            var eyeLeftPoseLookObject = new GameObject("eye_left_look"){ hideFlags = HideFlags.HideAndDontSave};
+            var leftEyeOffset = eyeLeftWorldPose.position - m_AREyePose.position;
+            var eyeLeftPoseLookObject = new GameObject("eye_left_look") { hideFlags = HideFlags.HideAndDontSave };
             m_EyeLeftPoseLookAt = eyeLeftPoseLookObject.transform;
             m_EyeLeftPoseLookAt.SetParent(m_AREyePose);
-            if(!m_LeftEyeNegZ)
+            if (!m_LeftEyeNegZ)
                 m_EyeLeftPoseLookAt.localPosition = Vector3.forward * m_EyeLookDistance + leftEyeOffset;
             else
                 m_EyeLeftPoseLookAt.localPosition = Vector3.back * m_EyeLookDistance + leftEyeOffset;
@@ -334,19 +334,19 @@ namespace Unity.Labs.FacialRemote
             m_AREyePose.rotation = Quaternion.identity;
 
             // Other strange rig stuff
-            m_LocalizedHeadParent = new GameObject("loc_head_parent"){ hideFlags = HideFlags.HideAndDontSave}.transform;
-            var locHeadOffset = new GameObject("loc_head_offset"){ hideFlags = HideFlags.HideAndDontSave};
+            m_LocalizedHeadParent = new GameObject("loc_head_parent") { hideFlags = HideFlags.HideAndDontSave }.transform;
+            var locHeadOffset = new GameObject("loc_head_offset") { hideFlags = HideFlags.HideAndDontSave };
             locHeadOffset.transform.SetParent(m_LocalizedHeadParent);
-            m_LocalizedHeadRot = new GameObject("loc_head_rot"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            m_LocalizedHeadRot = new GameObject("loc_head_rot") { hideFlags = HideFlags.HideAndDontSave }.transform;
             m_LocalizedHeadRot.SetParent(locHeadOffset.transform);
-            m_OtherLook = new GameObject("other_look"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            m_OtherLook = new GameObject("other_look") { hideFlags = HideFlags.HideAndDontSave }.transform;
             m_OtherLook.SetParent(m_LocalizedHeadRot.transform);
             m_OtherLook.localPosition = Vector3.forward * 0.25f;
 
-            var otherThingOffset = new GameObject("other_thing_offset"){ hideFlags = HideFlags.HideAndDontSave};
+            var otherThingOffset = new GameObject("other_thing_offset") { hideFlags = HideFlags.HideAndDontSave };
             otherThingOffset.transform.SetParent(m_LocalizedHeadParent);
             otherThingOffset.transform.rotation = transform.rotation;
-            m_OtherThing = new GameObject("other_thing"){ hideFlags = HideFlags.HideAndDontSave}.transform;
+            m_OtherThing = new GameObject("other_thing") { hideFlags = HideFlags.HideAndDontSave }.transform;
             m_OtherThing.SetParent(otherThingOffset.transform);
 
             if (m_HeadBone != null)
@@ -471,7 +471,7 @@ namespace Unity.Labs.FacialRemote
             if (m_DriveHead)
                 m_HeadBone.rotation = m_ARHeadPose.rotation;
 
-            if (m_DriveNeck )
+            if (m_DriveNeck)
                 m_NeckBone.rotation = m_ARNeckPose.rotation;
         }
     }

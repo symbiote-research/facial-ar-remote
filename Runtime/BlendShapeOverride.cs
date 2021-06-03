@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <summary>
     /// Stores the override values for an individual blend shape.
@@ -52,7 +52,7 @@ namespace Unity.Labs.FacialRemote
         public float blendShapeCoefficient { get { return m_BlendShapeCoefficient; } }
         public float blendShapeMax { get { return m_BlendShapeMax; } }
 
-        BlendShapeOverride(){}
+        BlendShapeOverride() { }
 
         public BlendShapeOverride(string name)
         {

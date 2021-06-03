@@ -1,4 +1,4 @@
-﻿namespace Unity.Labs.FacialRemote
+﻿namespace FacialRemote
 {
     /// <summary>
     /// Interface for common stream settings values. That contain the settings for the byte stream and decoding information.

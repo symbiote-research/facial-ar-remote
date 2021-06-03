@@ -1,4 +1,4 @@
-namespace Unity.Labs.FacialRemote
+namespace FacialRemote
 {
     /// <inheritdoc />
     /// <summary>
