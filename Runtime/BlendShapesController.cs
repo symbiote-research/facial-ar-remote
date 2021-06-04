@@ -108,9 +108,6 @@ namespace FacialRemote
         void Update()
         {
             var streamSource = streamReader.streamSource;
-            if (streamSource == null || !streamSource.active)
-                return;
-
             var streamSettings = streamSource.streamSettings;
             if (streamSettings != m_LastStreamSettings)
                 UpdateBlendShapeIndices(streamSettings);
